@@ -1,0 +1,101 @@
+{    
+    "quizQuestions" :[
+    {
+        "question": "Who is the champion that can go back in time?",
+        "answers": {
+            "a" : "Shaco",
+            "b" : "Lissandra",
+            "c" : "Ekko",
+            "d" : "Gnar"
+        },
+        "rightAnswer" : "c"
+    },
+    {
+        "question":"Where is Garen from?",
+        "answers": {
+            "a" : "Freljord",
+            "b" : "Noxus",
+            "c" : "Zaun",
+            "d" : "Demacia"
+        },
+        "rightAnswer" : "d"
+    },
+    {
+        "question":"How is Fizz Ultimate Skill Called?",
+        "answers": {
+            "a" : "Chum the Waters",
+            "b" : "Big Shark",
+            "c" : "Urchin Strike",
+            "d" : "Playful / Trickster"
+        },
+        "rightAnswer" : "a"
+    },
+    {
+        "question":"Which champion has the highest base HP at level 1 with no items, runes, or masteries equipped?",
+        "answers": {
+            "a" : "Trundle",
+            "b" : "Alistar",
+            "c" : "Garen",
+            "d" : "Tryndamere"
+        },
+        "rightAnswer" : "d"
+    },
+    {
+        "question":"Which Yasuo’s Ability is called Steel Tempest?",
+        "answers": {
+            "a" : "q",
+            "b" : "w",
+            "c" : "e",
+            "d" : "r"
+        },
+        "rightAnswer" : "a"
+    },
+    {
+        "question":"Who is that Champion?",
+        "answers": {
+            "a" : "Morgana",
+            "b" : "Lissandra",
+            "c" : "Ashe",
+            "d" : "Vi"
+        },
+        "rightAnswer" : "d"
+    },
+    {
+        "question":"Which Champion was released in February, 2016?",
+        "answers": {
+            "a" : "Ekko",
+            "b" : "Aurelion Sol",
+            "c" : "Jhin",
+            "d" : "Ornn"
+        },
+        "rightAnswer" : "c"
+    },
+    {
+        "question":"How many Champions are in League Of Legends (Jan, 2019)?",
+        "answers": {
+            "a" : "140",
+            "b" : "142",
+            "c" : "144",
+            "d" : "143"
+        },
+        "rightAnswer" : "d"
+    },
+    {
+        "question":"“Wealth is my kind of burden” Whose is that quote?",
+        "answers": {
+            "a" : "Sivir",
+            "b" : "LeBlanc",
+            "c" : "Galio",
+            "d" : "Twisted Fate"
+        },
+        "rightAnswer" : "a"
+    },
+    {
+        "question":"“It's not how much time you have, it's ____ you use it” Fill Ekkos Sentence!",
+        "answers": {
+            "textInput": ""
+        },
+        "rightAnswer" : "how"
+    }
+]
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>League Of Legends Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="js/script.js"></script>
+</head>
+<body>
+   <div class="layer">
+        <div class="content">
+            <!--Heading for testing text changes-->
+            <img id="questionImg" src="img/basic.png" alt="Question Image">
+            <h2 id="firstHeader">Welcome to The Legends Quiz!</h2>
+            <h3 id="secondHeader"></h3>
+
+            <p id="nameInputText">Please input your name to proceed:</p>
+            <input name="nameInput" id="nameInput" type="text" value="INPUT YOUR NAME">
+
+            <form name="answers" id="answers">
+                <input type="radio" name="gender" value="male"><label id="optionA">UNO</label>
+                <input type="radio" name="gender" value="female"><label id="optionB">DOS</label>
+                <input type="radio" name="gender" value="other"><label id="optionC">TRES</label>
+                <input type="radio" name="gender" value="other"><label id="optionD">CUATRO</label>
+              </form>
+              
+
+            <!-- <select name="answers">
+                    <option id="optionA" value="volvo">Volvo</option>
+                    <option id="optionB" value="saab">Saab</option>
+                    <option id="optionC" value="fiat">Fiat</option>
+                    <option id="optionD" value="audi">Audi</option>
+                  </select>    -->
+            <button class="button" onclick="testingTexting()"><span>Texxxta Ai Comedia</span></button>
+        
+        <!--Thats where the quiz content will be-->
+            <div id="quiz">
+
+            </div>
+        <!--Buttons for Submit or Skip question--> 
+            <button class="button" id="submit" onclick="testingTexting()"><span>Submit Quiz</span></button>
+            <button class="button" id="nextQuestion" onclick="nextQuestion()" ><span>Next</span></button>
+        <!--Div to output the result of the quiz-->     
+            <div id="results">
+
+            </div>
+        <!-- A simple flexbox with container and it's items (Good Content in here in the future, hope to use as options for answers in the Yasuo Question) -->     
+            <div class="container">
+                <div class="item">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis felis quis mi scelerisque, ac
+                        fermentum purus interdum. Suspendisse elementum semper placerat. Maecenas massa nibh, euismod non ante
+                        sit amet, porta luctus libero. Suspendisse potenti. Quisque odio nunc, convallis eget aliquam sit amet,
+                        tempus non augue. Sed vulputate, ligula nec vestibulum finibus, justo diam vehicula elit, id cursus dui
+                            arcu et quam. Aenean ut nisl consequat, molestie odio at, pellentesque ligula. Maecenas ac augue eget sem 
+                            dictum mattis. Ut eu quam ac lacus varius hendrerit. Pellentesque lacus lorem, bibendum et tellus id, rutrum 
+                            consequat velit. Mauris sollicitudin dictum velit sed ultrices. </p>
+                </div>
+                <div class="item">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis felis quis mi scelerisque, ac
+                            fermentum purus interdum. Suspendisse elementum semper placerat. Maecenas massa nibh, euismod non ante
+                                sit amet, porta luctus libero. Suspendisse potenti. Quisque odio nunc, convallis eget aliquam sit amet,
+                                tempus non augue. Sed vulputate, ligula nec vestibulum finibus, justo diam vehicula elit, id cursus dui
+                                arcu et quam. Aenean ut nisl consequat, molestie odio at, pellentesque ligula. Maecenas ac augue eget sem 
+                                dictum mattis. Ut eu quam ac lacus varius hendrerit. Pellentesque lacus lorem, bibendum et tellus id, rutrum 
+                                consequat velit. Mauris sollicitudin dictum velit sed ultrices. </p>
+                </div>
+                <div class="item">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis felis quis mi scelerisque, ac
+                            fermentum purus interdum. Suspendisse elementum semper placerat. Maecenas massa nibh, euismod non ante
+                                sit amet, porta luctus libero. Suspendisse potenti. Quisque odio nunc, convallis eget aliquam sit amet,
+                                tempus non augue. Sed vulputate, ligula nec vestibulum finibus, justo diam vehicula elit, id cursus dui
+                                arcu et quam. Aenean ut nisl consequat, molestie odio at, pellentesque ligula. Maecenas ac augue eget sem 
+                                dictum mattis. Ut eu quam ac lacus varius hendrerit. Pellentesque lacus lorem, bibendum et tellus id, rutrum 
+                                consequat velit. Mauris sollicitudin dictum velit sed ultrices. </p>
+                </div>
+            </div>
+        </div> 
+    </div>   
+</body>
+</html>
