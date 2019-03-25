@@ -166,6 +166,7 @@ function testingTexting(){
     var nameInput = document.getElementById("nameInput").value;
     var hideNameInput = document.getElementById("nameInput");
     var hideNameInputText = document.getElementById("nameInputText");
+    var finalQuestions = questions;
 
 
     //Starts the main function if the user input his/her name.
@@ -176,24 +177,24 @@ function testingTexting(){
         hideNameInput.style.display = "none";
         hideNameInputText.style.display = "none";
 
-        console.log(questions);
+        console.log(finalQuestions);
 
         //Using innerHTML to change the content from the html for the ones in the sets of questions.
-        firstHeaderChange.innerHTML = quizQuestions[questions[whichQuestion]].question;
+        firstHeaderChange.innerHTML = quizQuestions[finalQuestions[whichQuestion]].question;
         secondHeaderChange.innerHTML = "Welcome, " +  nameInput + ", Enjoy!";
-        optionA.innerHTML = quizQuestions[questions[whichQuestion]].answers.a;
-        optionB.innerHTML = quizQuestions[questions[whichQuestion]].answers.b;
-        optionC.innerHTML = quizQuestions[questions[whichQuestion]].answers.c;
-        optionD.innerHTML = quizQuestions[questions[whichQuestion]].answers.d;
+        optionA.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.a;
+        optionB.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.b;
+        optionC.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.c;
+        optionD.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.d;
         
         //Changing values to each question.
-        optionA.value = quizQuestions[questions[whichQuestion]].answers.a;
-        optionB.value = quizQuestions[questions[whichQuestion]].answers.b;
-        optionC.value = quizQuestions[questions[whichQuestion]].answers.c;
-        optionD.value = quizQuestions[questions[whichQuestion]].answers.d;
+        optionA.value = quizQuestions[finalQuestions[whichQuestion]].answers.a;
+        optionB.value = quizQuestions[finalQuestions[whichQuestion]].answers.b;
+        optionC.value = quizQuestions[finalQuestions[whichQuestion]].answers.c;
+        optionD.value = quizQuestions[finalQuestions[whichQuestion]].answers.d;
 
         var imageChange = document.getElementById("questionImg");
-        imageChange.src= quizQuestions[questions[whichQuestion]].imageId;
+        imageChange.src= quizQuestions[finalQuestions[whichQuestion]].imageId;
         console.log(whichQuestion);
         
         if(whichQuestion >= 4){
