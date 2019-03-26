@@ -19,12 +19,20 @@
             <p id="nameInputText">Please input your name to proceed:</p>
             <input name="nameInput" id="nameInput" type="text" value="INPUT YOUR NAME">
 
-            <div name="answers" id="answers">
-                <input type="radio" onchange="setAnswer()" id="checkA" value=""><label id="optionA"></label>
-                <input type="radio" onchange="setAnswer()" id="checkB" value=""><label id="optionB"></label>
-                <input type="radio" onchange="setAnswer()" id="checkC" value=""><label id="optionC"></label>
-                <input type="radio" onchange="setAnswer()" id="checkD" value=""><label id="optionD"></label>
-            </div>
+            <select name="answers" id="answers">
+                <option value="" id="option"></option>
+                <option value="" id="optionA"></option>
+                <option value="" id="optionB"></option>
+                <option value="" id="optionC"></option>
+                <option value="" id="optionD"></option>
+            </select>
+
+<!--             <div name="answers" id="answers">
+                <input type="radio" id="checkA" onclick="getAValue()" value=""><label id="optionA"></label>
+                <input type="radio" id="checkB" onclick="getBValue()" value=""><label id="optionB"></label>
+                <input type="radio" id="checkC" onclick="getCValue()" value=""><label id="optionC"></label>
+                <input type="radio" id="checkD" onclick="getDValue()" value=""><label id="optionD"></label>
+            </div> -->
 
             <button class="button" onclick="testingTexting()"><span>Texxxta Ai Comedia</span></button>
         
@@ -33,7 +41,7 @@
 
             </div>
         <!--Buttons for Submit or Skip question--> 
-            <button class="button" id="submit" onclick="testingTexting()"><span>Submit Quiz</span></button>
+            <button class="button" id="submit" onclick="testingTexting(); setAnswer()"><span>Submit Quiz</span></button>
             <button class="button" id="nextQuestion" onclick="nextQuestion()" ><span>Next</span></button>
         <!--Div to output the result of the quiz-->     
             <div id="results">

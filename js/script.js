@@ -8,6 +8,7 @@ var questions = randomNumber(5,10);
 var rightAnswers = 0;
 var radioForm = document.getElementById('radioButtonsForm');
 
+
 //Quiz Question inside an array of objects.
 const quizQuestions = [ 
     {
@@ -120,6 +121,7 @@ const quizQuestions = [
     },
 ]
 
+
 function showResults(){
 
 }
@@ -143,49 +145,7 @@ function randomNumber(elements, rangeFromZero){
             }else{
                 i--;
             } 
-            //console.log(givenQuestion[i]);
     }return givenQuestion;
-}
-
-function countRights(){
-
-    
-
-
-/*     if(isRightAnswer == rightAnswer){
-        rightAnswers++;
-    } */
-}
-
-function setAnswer(){
-    var checkA = document.getElementById("checkA");
-    var checkB = document.getElementById("checkB");
-    var checkC = document.getElementById("checkC");
-    var checkD = document.getElementById("checkD");
-    var finalQuestions = questions;
-    var isRightAnswer = document.getElementById('answers').value;
-    var answerChoiceA = checkA.value;
-    var answerChoiceB = checkB.value;
-    var answerChoiceC = checkC.value;
-    var answerChoiceD = checkD.value;
-
-    if(checkA.checked){
-        isRightAnswer = answerChoiceA;
-    }
-    else if(checkB.checked){
-        isRightAnswer = answerChoiceB;
-    }
-    else if(checkC.checked){
-        isRightAnswer = answerChoiceC;
-    }
-    else if(checkD.checked){
-        isRightAnswer = answerChoiceD;
-    }else{
-      /*   isRightAnswer = ""; */
-    }
-
-    console.log(isRightAnswer);
-
 }
 
 //Tests for the buttons and array.
@@ -205,12 +165,14 @@ function testingTexting(){
     var nameInput = document.getElementById("nameInput").value;
     var hideNameInput = document.getElementById("nameInput");
     var hideNameInputText = document.getElementById("nameInputText");
+    var isRightAnswer = document.getElementById('answers').value;
+
+    //Hardcoding complex variables.
     var finalQuestions = questions;
     var answerChoiceA = quizQuestions[finalQuestions[whichQuestion]].answers.a;
     var answerChoiceB = quizQuestions[finalQuestions[whichQuestion]].answers.b;
     var answerChoiceC = quizQuestions[finalQuestions[whichQuestion]].answers.c;
     var answerChoiceD = quizQuestions[finalQuestions[whichQuestion]].answers.d;
-   // var isRightAnswer = document.getElementById('answers').value;
     
 
     //Starts the main function if the user input his/her name.
@@ -226,50 +188,35 @@ function testingTexting(){
         //Using innerHTML to change the content from the html for the ones in the sets of questions.
         firstHeaderChange.innerHTML = quizQuestions[finalQuestions[whichQuestion]].question;
         secondHeaderChange.innerHTML = "Welcome, " +  nameInput + ", Enjoy!";
+        
         optionA.innerHTML = answerChoiceA;
         optionB.innerHTML = answerChoiceB;
         optionC.innerHTML = answerChoiceC;
         optionD.innerHTML = answerChoiceD;
 
+        //Declaring the variables accordingly with the choice of answer.
+        optionA.value = answerChoiceA;
+        optionB.value = answerChoiceB;
+        optionC.value = answerChoiceC;
+        optionD.value = answerChoiceD;
 
-        /*if(checkA.checked){
-            isRightAnswer = answerChoiceA;
-        }
-        else if(checkB.checked){
-            isRightAnswer = answerChoiceB;
-        }
-        else if(checkC.checked){
-            isRightAnswer = answerChoiceC;
-        }
-        else if(checkD.checked){
-            isRightAnswer = answerChoiceD;
-        }else{
-            isRightAnswer = "";
-        } */
-
-
-        //console.log(isRightAnswer);
-
+        //Changing the Question Image.
         var imageChange = document.getElementById("questionImg");
         imageChange.src= quizQuestions[finalQuestions[whichQuestion]].imageId;
-        console.log(whichQuestion);
-        //console.log(isRightAnswer);
 
+        //Increasing the variable that goes trough the array of questions (index).
         whichQuestion++;
 
-        checkA.checked = false;
-        checkB.checked = false;
-        checkC.checked = false;
-        checkD.checked = false;
+        //Logs on the console to see the behaviour of the main variables.
+        console.log(whichQuestion);
+        console.log(isRightAnswer);
 
+        //If the array index of the elements is equals or greater than 4 it stops the index from increasing.
         if(whichQuestion >= 4){
-          //  console.log();
+
         }
-        
-    //If the Name is not input asks the user for it.
     }else{
         alert("Please input your name!");
-    }
+        }
 }
-
 
