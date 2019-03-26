@@ -6,6 +6,7 @@ const nextQuestionButton = document.getElementById('nextQuestion');
 var whichQuestion = 0;
 var questions = randomNumber(5,10);
 var rightAnswers = 0;
+var radioForm = document.getElementById('radioButtonsForm');
 
 //Quiz Question inside an array of objects.
 const quizQuestions = [ 
@@ -147,9 +148,43 @@ function randomNumber(elements, rangeFromZero){
 }
 
 function countRights(){
-    if(value == rightAnswer){
+
+    
+
+
+/*     if(isRightAnswer == rightAnswer){
         rightAnswers++;
+    } */
+}
+
+function setAnswer(){
+    var checkA = document.getElementById("checkA");
+    var checkB = document.getElementById("checkB");
+    var checkC = document.getElementById("checkC");
+    var checkD = document.getElementById("checkD");
+    var finalQuestions = questions;
+    var isRightAnswer = document.getElementById('answers').value;
+    var answerChoiceA = checkA.value;
+    var answerChoiceB = checkB.value;
+    var answerChoiceC = checkC.value;
+    var answerChoiceD = checkD.value;
+
+    if(checkA.checked){
+        isRightAnswer = answerChoiceA;
     }
+    else if(checkB.checked){
+        isRightAnswer = answerChoiceB;
+    }
+    else if(checkC.checked){
+        isRightAnswer = answerChoiceC;
+    }
+    else if(checkD.checked){
+        isRightAnswer = answerChoiceD;
+    }else{
+      /*   isRightAnswer = ""; */
+    }
+
+    console.log(isRightAnswer);
 
 }
 
@@ -162,12 +197,21 @@ function testingTexting(){
     var optionB = document.getElementById("optionB");
     var optionC = document.getElementById("optionC");
     var optionD = document.getElementById("optionD");
+    var checkA = document.getElementById("checkA");
+    var checkB = document.getElementById("checkB");
+    var checkC = document.getElementById("checkC");
+    var checkD = document.getElementById("checkD");
     var showAnswers = document.getElementById("answers");
     var nameInput = document.getElementById("nameInput").value;
     var hideNameInput = document.getElementById("nameInput");
     var hideNameInputText = document.getElementById("nameInputText");
     var finalQuestions = questions;
-
+    var answerChoiceA = quizQuestions[finalQuestions[whichQuestion]].answers.a;
+    var answerChoiceB = quizQuestions[finalQuestions[whichQuestion]].answers.b;
+    var answerChoiceC = quizQuestions[finalQuestions[whichQuestion]].answers.c;
+    var answerChoiceD = quizQuestions[finalQuestions[whichQuestion]].answers.d;
+   // var isRightAnswer = document.getElementById('answers').value;
+    
 
     //Starts the main function if the user input his/her name.
     if(nameInput != "" && nameInput != "INPUT YOUR NAME" ){
@@ -177,30 +221,49 @@ function testingTexting(){
         hideNameInput.style.display = "none";
         hideNameInputText.style.display = "none";
 
-        console.log(finalQuestions);
+        //console.log(finalQuestions);
 
         //Using innerHTML to change the content from the html for the ones in the sets of questions.
         firstHeaderChange.innerHTML = quizQuestions[finalQuestions[whichQuestion]].question;
         secondHeaderChange.innerHTML = "Welcome, " +  nameInput + ", Enjoy!";
-        optionA.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.a;
-        optionB.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.b;
-        optionC.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.c;
-        optionD.innerHTML = quizQuestions[finalQuestions[whichQuestion]].answers.d;
-        
-        //Changing values to each question.
-        optionA.value = quizQuestions[finalQuestions[whichQuestion]].answers.a;
-        optionB.value = quizQuestions[finalQuestions[whichQuestion]].answers.b;
-        optionC.value = quizQuestions[finalQuestions[whichQuestion]].answers.c;
-        optionD.value = quizQuestions[finalQuestions[whichQuestion]].answers.d;
+        optionA.innerHTML = answerChoiceA;
+        optionB.innerHTML = answerChoiceB;
+        optionC.innerHTML = answerChoiceC;
+        optionD.innerHTML = answerChoiceD;
+
+
+        /*if(checkA.checked){
+            isRightAnswer = answerChoiceA;
+        }
+        else if(checkB.checked){
+            isRightAnswer = answerChoiceB;
+        }
+        else if(checkC.checked){
+            isRightAnswer = answerChoiceC;
+        }
+        else if(checkD.checked){
+            isRightAnswer = answerChoiceD;
+        }else{
+            isRightAnswer = "";
+        } */
+
+
+        //console.log(isRightAnswer);
 
         var imageChange = document.getElementById("questionImg");
         imageChange.src= quizQuestions[finalQuestions[whichQuestion]].imageId;
         console.log(whichQuestion);
-        
-        if(whichQuestion >= 4){
+        //console.log(isRightAnswer);
 
-        }else{
-            whichQuestion++;
+        whichQuestion++;
+
+        checkA.checked = false;
+        checkB.checked = false;
+        checkC.checked = false;
+        checkD.checked = false;
+
+        if(whichQuestion >= 4){
+          //  console.log();
         }
         
     //If the Name is not input asks the user for it.

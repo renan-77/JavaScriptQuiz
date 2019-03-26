@@ -19,20 +19,13 @@
             <p id="nameInputText">Please input your name to proceed:</p>
             <input name="nameInput" id="nameInput" type="text" value="INPUT YOUR NAME">
 
-            <form name="answers" id="answers">
-                <input type="radio" name="gender" value="male"><label id="optionA"></label>
-                <input type="radio" name="gender" value="female"><label id="optionB"></label>
-                <input type="radio" name="gender" value="other"><label id="optionC"></label>
-                <input type="radio" name="gender" value="other"><label id="optionD"></label>
-              </form>
-              
+            <div name="answers" id="answers">
+                <input type="radio" onchange="setAnswer()" id="checkA" value=""><label id="optionA"></label>
+                <input type="radio" onchange="setAnswer()" id="checkB" value=""><label id="optionB"></label>
+                <input type="radio" onchange="setAnswer()" id="checkC" value=""><label id="optionC"></label>
+                <input type="radio" onchange="setAnswer()" id="checkD" value=""><label id="optionD"></label>
+            </div>
 
-            <!-- <select name="answers">
-                    <option id="optionA" value="volvo">Volvo</option>
-                    <option id="optionB" value="saab">Saab</option>
-                    <option id="optionC" value="fiat">Fiat</option>
-                    <option id="optionD" value="audi">Audi</option>
-                  </select>    -->
             <button class="button" onclick="testingTexting()"><span>Texxxta Ai Comedia</span></button>
         
         <!--Thats where the quiz content will be-->
