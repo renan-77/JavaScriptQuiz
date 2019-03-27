@@ -48,8 +48,23 @@ select {
     border-radius: 4px;
     width: 200px;
     text-align: center;
+    font-weight: bold;
     
 }
+
+#yasuoSkills{
+    display: none;
+    
+}
+
+#yasuo{
+    opacity: 1;
+}
+
+#yasuo:hover{
+    opacity: 0.3;
+}
+
 
 .container{
     display: flex;

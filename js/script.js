@@ -5,8 +5,12 @@ const submitButton = document.getElementById('submit');
 const nextQuestionButton = document.getElementById('nextQuestion');
 var whichQuestion = 0;
 var questions = randomNumber(5,10);
-var rightAnswers = 0;
+var choosenAnswer = "";
 var radioForm = document.getElementById('radioButtonsForm');
+var yasuoIsRightAnswer = "";
+var confirmAnswer = "";
+var answersRight = 0;
+
 
 
 //Quiz Question inside an array of objects.
@@ -67,7 +71,6 @@ const quizQuestions = [
         imageId: "img/basic.png"
     },
     {
-        //An image should come before that question.
         question:"Who is that Champion?",
         answers: {
             a: "Morgana",
@@ -121,8 +124,12 @@ const quizQuestions = [
     },
 ]
 
+function genResults(){
+    if(isRightAnswer == confirmAnswer){
+        answersRight++
+    }else{
 
-function showResults(){
+    }return answersRight;
 
 }
 
@@ -148,6 +155,24 @@ function randomNumber(elements, rangeFromZero){
     }return givenQuestion;
 }
 
+function yasuoQuestionQ(){
+        yasuoIsRightAnswer = "q";
+        return yasuoIsRightAnswer;
+}
+function yasuoQuestionW(){
+        yasuoIsRightAnswer = "w";
+        return yasuoIsRightAnswer;
+}
+function yasuoQuestionE(){
+        yasuoIsRightAnswer = "e";
+        return yasuoIsRightAnswer;
+}
+function yasuoQuestionR(){
+        yasuoIsRightAnswer = "r";
+        return yasuoIsRightAnswer;
+}
+
+
 //Tests for the buttons and array.
 function testingTexting(){
     //assigning variables to the id's.
@@ -157,15 +182,12 @@ function testingTexting(){
     var optionB = document.getElementById("optionB");
     var optionC = document.getElementById("optionC");
     var optionD = document.getElementById("optionD");
-    var checkA = document.getElementById("checkA");
-    var checkB = document.getElementById("checkB");
-    var checkC = document.getElementById("checkC");
-    var checkD = document.getElementById("checkD");
     var showAnswers = document.getElementById("answers");
     var nameInput = document.getElementById("nameInput").value;
     var hideNameInput = document.getElementById("nameInput");
     var hideNameInputText = document.getElementById("nameInputText");
     var isRightAnswer = document.getElementById('answers').value;
+
 
     //Hardcoding complex variables.
     var finalQuestions = questions;
@@ -173,28 +195,44 @@ function testingTexting(){
     var answerChoiceB = quizQuestions[finalQuestions[whichQuestion]].answers.b;
     var answerChoiceC = quizQuestions[finalQuestions[whichQuestion]].answers.c;
     var answerChoiceD = quizQuestions[finalQuestions[whichQuestion]].answers.d;
-    
+
 
     //Starts the main function if the user input his/her name.
     if(nameInput != "" && nameInput != "INPUT YOUR NAME" ){
+
+        if(quizQuestions[finalQuestions[whichQuestion]].question == "Which Yasuo’s Ability is called Steel Tempest?"){
+            document.getElementById('yasuoSkills').style.display = "inline";
+            showAnswers.style.display = "none";
+            hideNameInput.style.display = "none";
+            hideNameInputText.style.display = "none";
+
+        }else{
 
         //CSS display changes.
         showAnswers.style.display = "block"; 
         hideNameInput.style.display = "none";
         hideNameInputText.style.display = "none";
-
+        document.getElementById('yasuoSkills').style.display = "none";
+        }
         //console.log(finalQuestions);
+        if(yasuoIsRightAnswer != ""){
+            isRightAnswer = yasuoIsRightAnswer; // Assigns the main checkAnswer variable to the same value as yasuoIsRightAnswer.
+            confirmAnswer = quizQuestions[finalQuestions[whichQuestion]].rightAnswer;
+            yasuoIsRightAnswer = ""; //That's a reset
+        }
 
+        
         //Using innerHTML to change the content from the html for the ones in the sets of questions.
         firstHeaderChange.innerHTML = quizQuestions[finalQuestions[whichQuestion]].question;
         secondHeaderChange.innerHTML = "Welcome, " +  nameInput + ", Enjoy!";
-        
+
         optionA.innerHTML = answerChoiceA;
         optionB.innerHTML = answerChoiceB;
         optionC.innerHTML = answerChoiceC;
         optionD.innerHTML = answerChoiceD;
 
         //Declaring the variables accordingly with the choice of answer.
+        
         optionA.value = answerChoiceA;
         optionB.value = answerChoiceB;
         optionC.value = answerChoiceC;
@@ -203,20 +241,29 @@ function testingTexting(){
         //Changing the Question Image.
         var imageChange = document.getElementById("questionImg");
         imageChange.src= quizQuestions[finalQuestions[whichQuestion]].imageId;
-
-        //Increasing the variable that goes trough the array of questions (index).
-        whichQuestion++;
-
+    
         //Logs on the console to see the behaviour of the main variables.
         console.log(whichQuestion);
         console.log(isRightAnswer);
-
+       
+        //Increasing the variable that goes trough the array of questions (index).
+        
         //If the array index of the elements is equals or greater than 4 it stops the index from increasing.
-        if(whichQuestion >= 4){
 
+        if(isRightAnswer === confirmAnswer){
+            answersRight++
+        }
+
+        if(whichQuestion >= 4){
+            console.log("Right Answers: " + answersRight);
+        }
+        else{
+        whichQuestion++;
         }
     }else{
         alert("Please input your name!");
         }
+    
+ 
 }
 

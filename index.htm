@@ -13,26 +13,29 @@
         <div class="content">
             <!--Heading for testing text changes-->
             <img id="questionImg" src="img/basic.png" alt="Question Image">
-            <h2 id="firstHeader">Welcome to The Legends Quiz!</h2>
             <h3 id="secondHeader"></h3>
+            <h2 id="firstHeader">Welcome to The Legends Quiz!</h2>
+            
 
             <p id="nameInputText">Please input your name to proceed:</p>
             <input name="nameInput" id="nameInput" type="text" value="INPUT YOUR NAME">
 
+            <!--Answers in a dropdown list-->
             <select name="answers" id="answers">
-                <option value="" id="option"></option>
+                <option value="" id="default">PLEASE SELECT AN OPTION</option>
                 <option value="" id="optionA"></option>
                 <option value="" id="optionB"></option>
                 <option value="" id="optionC"></option>
                 <option value="" id="optionD"></option>
             </select>
 
-<!--             <div name="answers" id="answers">
-                <input type="radio" id="checkA" onclick="getAValue()" value=""><label id="optionA"></label>
-                <input type="radio" id="checkB" onclick="getBValue()" value=""><label id="optionB"></label>
-                <input type="radio" id="checkC" onclick="getCValue()" value=""><label id="optionC"></label>
-                <input type="radio" id="checkD" onclick="getDValue()" value=""><label id="optionD"></label>
-            </div> -->
+            <!--Answers for yasuo question-->
+            <div id="yasuoSkills">
+                <img src="/img/yasuoQ.png" alt="yasuoQ" id="yasuo" onclick="yasuoQuestionQ()">
+                <img src="/img/yasuoW.png" alt="yasuoW" id="yasuo" onclick="yasuoQuestionW()">
+                <img src="/img/yasuoE.png" alt="yasuoE" id="yasuo" onclick="yasuoQuestionE()">
+                <img src="/img/yasuoR.png" alt="yasuoR" id="yasuo" onclick="yasuoQuestionR()">
+            </div><br>
 
             <button class="button" onclick="testingTexting()"><span>Texxxta Ai Comedia</span></button>
         
