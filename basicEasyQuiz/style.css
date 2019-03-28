@@ -1,0 +1,32 @@
+html, body {
+    color: #f1f1f1;
+    text-align: justify;
+    background-image: url("/img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Arial;
+    
+}
+
+.layer {
+    background-color: rgba(29, 29, 29, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+ 
+}
+
+.content{
+    display: block;
+    width: 80%;
+    height: 90%;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+#question3{
+    display: block;
+}
+

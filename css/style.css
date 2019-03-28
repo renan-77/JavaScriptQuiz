@@ -14,7 +14,6 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
  
 }
 
@@ -29,6 +28,11 @@ html, body {
 
 #nameInput{
     display: inline;
+    border-radius: 4px;
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
 }
 
 #answers{
@@ -95,6 +99,16 @@ select {
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all .5s ease-out;
+}
+
+
+
+#nextButton {
+    display: inline;
+}
+
+#submitButton {
+    display: none;
 }
 
 .button span {

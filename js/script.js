@@ -23,7 +23,7 @@ const quizQuestions = [
             c: "Ekko",
             d: "Gnar"
         },
-        rightAnswer: "c",
+        rightAnswer: "Ekko",
         imageId: "img/basic.png"
     },
     {
@@ -34,7 +34,7 @@ const quizQuestions = [
             c: "Zaun",
             d: "Demacia"
         },
-        rightAnswer: "d",
+        rightAnswer: "Demacia",
         imageId: "img/basic.png"
     },
     {
@@ -45,7 +45,7 @@ const quizQuestions = [
             c: "Urchin Strike",
             d: "Playful / Trickster"
         },
-        rightAnswer: "a",
+        rightAnswer: "Chum the Waters",
         imageId: "img/basic.png"
     },
     {
@@ -56,7 +56,7 @@ const quizQuestions = [
             c: "Garen",
             d: "Tryndamere"
         },
-        rightAnswer: "d",
+        rightAnswer: "Tryndamere",
         imageId: "img/basic.png"
     },
     {
@@ -67,7 +67,7 @@ const quizQuestions = [
             c: "e",
             d: "r"
         },
-        rightAnswer: "a",
+        rightAnswer: "q",
         imageId: "img/basic.png"
     },
     {
@@ -78,7 +78,7 @@ const quizQuestions = [
             c: "Ashe",
             d: "Vi"
         },
-        rightAnswer: "d",
+        rightAnswer: "Vi",
         imageId: "img/vi.jpg"
     },
     {
@@ -89,7 +89,7 @@ const quizQuestions = [
             c: "Jhin",
             d: "Ornn"
         },
-        rightAnswer: "c",
+        rightAnswer: "Ekko",
         imageId: "img/basic.png"
     },
     {
@@ -100,7 +100,7 @@ const quizQuestions = [
             c: "144",
             d: "143"
         },
-        rightAnswer: "d",
+        rightAnswer: "143",
         imageId: "img/basic.png"
     },
     {
@@ -111,7 +111,7 @@ const quizQuestions = [
             c: "Galio",
             d: "Twisted Fate"
         },
-        rightAnswer: "a",
+        rightAnswer: "Sivir",
         imageId: "img/basic.png"
     },
     {
@@ -125,11 +125,8 @@ const quizQuestions = [
 ]
 
 function genResults(){
-    if(isRightAnswer == confirmAnswer){
-        answersRight++
-    }else{
 
-    }return answersRight;
+    console.log(answersRight);
 
 }
 
@@ -155,6 +152,8 @@ function randomNumber(elements, rangeFromZero){
     }return givenQuestion;
 }
 
+
+//Yasuo question functions.
 function yasuoQuestionQ(){
         yasuoIsRightAnswer = "q";
         return yasuoIsRightAnswer;
@@ -186,8 +185,8 @@ function testingTexting(){
     var nameInput = document.getElementById("nameInput").value;
     var hideNameInput = document.getElementById("nameInput");
     var hideNameInputText = document.getElementById("nameInputText");
+    finishQuiz = false;
     var isRightAnswer = document.getElementById('answers').value;
-
 
     //Hardcoding complex variables.
     var finalQuestions = questions;
@@ -195,7 +194,7 @@ function testingTexting(){
     var answerChoiceB = quizQuestions[finalQuestions[whichQuestion]].answers.b;
     var answerChoiceC = quizQuestions[finalQuestions[whichQuestion]].answers.c;
     var answerChoiceD = quizQuestions[finalQuestions[whichQuestion]].answers.d;
-
+    
 
     //Starts the main function if the user input his/her name.
     if(nameInput != "" && nameInput != "INPUT YOUR NAME" ){
@@ -214,13 +213,6 @@ function testingTexting(){
         hideNameInputText.style.display = "none";
         document.getElementById('yasuoSkills').style.display = "none";
         }
-        //console.log(finalQuestions);
-        if(yasuoIsRightAnswer != ""){
-            isRightAnswer = yasuoIsRightAnswer; // Assigns the main checkAnswer variable to the same value as yasuoIsRightAnswer.
-            confirmAnswer = quizQuestions[finalQuestions[whichQuestion]].rightAnswer;
-            yasuoIsRightAnswer = ""; //That's a reset
-        }
-
         
         //Using innerHTML to change the content from the html for the ones in the sets of questions.
         firstHeaderChange.innerHTML = quizQuestions[finalQuestions[whichQuestion]].question;
@@ -233,10 +225,10 @@ function testingTexting(){
 
         //Declaring the variables accordingly with the choice of answer.
         
-        optionA.value = answerChoiceA;
+/*         optionA.value = answerChoiceA;
         optionB.value = answerChoiceB;
         optionC.value = answerChoiceC;
-        optionD.value = answerChoiceD;
+        optionD.value = answerChoiceD; */
 
         //Changing the Question Image.
         var imageChange = document.getElementById("questionImg");
@@ -244,26 +236,37 @@ function testingTexting(){
     
         //Logs on the console to see the behaviour of the main variables.
         console.log(whichQuestion);
-        console.log(isRightAnswer);
-       
+        console.log("Aff  " + isRightAnswer);
+        
         //Increasing the variable that goes trough the array of questions (index).
         
         //If the array index of the elements is equals or greater than 4 it stops the index from increasing.
+        confirmAnswer = quizQuestions[finalQuestions[whichQuestion]].rightAnswer;
+        console.log("TBC = " + confirmAnswer);
 
-        if(isRightAnswer === confirmAnswer){
-            answersRight++
+        if(isRightAnswer != ""){
+        var isThatRight = isRightAnswer == confirmAnswer;
+        console.log("And the answer is: " + isThatRight);
         }
 
-        if(whichQuestion >= 4){
-            console.log("Right Answers: " + answersRight);
-        }
-        else{
+        if(whichQuestion == 4){
+            document.getElementById("submitButton").style.display = "block";
+            document.getElementById("nextButton").style.display = "none";
+        }else{
         whichQuestion++;
         }
+
+        if(yasuoIsRightAnswer != ""){
+            isRightAnswer = yasuoIsRightAnswer; // Assigns the main checkAnswer variable to the same value as yasuoIsRightAnswer.
+            yasuoIsRightAnswer = ""; //That's a reset
+        }
+
     }else{
         alert("Please input your name!");
         }
-    
+    if(isThatRight){
+        answersRight++;
+    }
  
 }
 

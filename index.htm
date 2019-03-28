@@ -21,12 +21,12 @@
             <input name="nameInput" id="nameInput" type="text" value="INPUT YOUR NAME">
 
             <!--Answers in a dropdown list-->
-            <select name="answers" id="answers">
-                <option value="" id="default">PLEASE SELECT AN OPTION</option>
-                <option value="" id="optionA"></option>
-                <option value="" id="optionB"></option>
-                <option value="" id="optionC"></option>
-                <option value="" id="optionD"></option>
+            <select name="answers" id="answers" value="">
+                <option value="noAnswer" id="default">PLEASE SELECT AN OPTION</option>
+                <option value="noAnswer" id="optionA"></option>
+                <option value="noAnswer" id="optionB"></option>
+                <option value="noAnswer" id="optionC"></option>
+                <option value="noAnswer" id="optionD"></option>
             </select>
 
             <!--Answers for yasuo question-->
@@ -37,15 +37,17 @@
                 <img src="/img/yasuoR.png" alt="yasuoR" id="yasuo" onclick="yasuoQuestionR()">
             </div><br>
 
-            <button class="button" onclick="testingTexting()"><span>Texxxta Ai Comedia</span></button>
-        
+            <div id="nextButton">
+            <button class="button next" onclick="testingTexting()"><span>Next</span></button>
+            </div>
         <!--Thats where the quiz content will be-->
             <div id="quiz">
 
             </div>
         <!--Buttons for Submit or Skip question--> 
-            <button class="button" id="submit" onclick="testingTexting(); setAnswer()"><span>Submit Quiz</span></button>
-            <button class="button" id="nextQuestion" onclick="nextQuestion()" ><span>Next</span></button>
+        <div id="submitButton">
+            <button class="button" onclick="genResults()"><span>Submit Quiz</span></button>
+        </div>
         <!--Div to output the result of the quiz-->     
             <div id="results">
 
