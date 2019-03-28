@@ -4,7 +4,7 @@ const resultsContainer = document.getElementById('results');
 const submitButton = document.getElementById('submit');
 const nextQuestionButton = document.getElementById('nextQuestion');
 var whichQuestion = 0;
-var questions = randomNumber(5,10);
+var questions = randomNumber(6,10);
 var choosenAnswer = "";
 var radioForm = document.getElementById('radioButtonsForm');
 var yasuoIsRightAnswer = "";
@@ -115,7 +115,7 @@ const quizQuestions = [
         imageId: "img/basic.png"
     },
     {
-        question:"“It's not how much time you have, it's ____ you use it” Fill Ekkos Sentence!",
+        question:"\"It's not how much time you have, it's ____ you use it\" Fill Ekkos Sentence!",
         answers: {
             textInput: ""
         },
@@ -125,8 +125,18 @@ const quizQuestions = [
 ]
 
 function genResults(){
+    document.getElementById('yasuoSkills').style.display = "none";
+    document.getElementById("answers").style.display = "none";
+    document.getElementById("nameInput").style.display = "none";
+    document.getElementById("nameInputText").style.display = "none";
+    document.getElementById("secondHeader").style.display = "none";
+    document.getElementById("answers").style.display = "none";
+    document.getElementById("submitButton").style.display = "none";
+    
 
-    console.log(answersRight);
+    document.getElementById("firstHeader").innerHTML = "You got: " + answersRight + " right answers!";
+
+    console.log("You got: " + answersRight + " right answers!");
 
 }
 
@@ -142,7 +152,7 @@ function randomNumber(elements, rangeFromZero){
 
         //Says that if in the generated number is not in the array called givenQuestion to add it in the position "i". 
            if(randomQuestion != givenQuestion[0] && randomQuestion != givenQuestion[1] && randomQuestion != givenQuestion[2] 
-                && randomQuestion != givenQuestion[3] && randomQuestion != givenQuestion[4]){
+                && randomQuestion != givenQuestion[3] && randomQuestion != givenQuestion[4] && randomQuestion != givenQuestion[5]){
                     givenQuestion[i] = randomQuestion;
            
             //If the number is in the array subtract 1 from i.
@@ -185,8 +195,8 @@ function testingTexting(){
     var nameInput = document.getElementById("nameInput").value;
     var hideNameInput = document.getElementById("nameInput");
     var hideNameInputText = document.getElementById("nameInputText");
-    finishQuiz = false;
     var isRightAnswer = document.getElementById('answers').value;
+    var ekkoIsRightAnswer = "";
 
     //Hardcoding complex variables.
     var finalQuestions = questions;
@@ -194,7 +204,7 @@ function testingTexting(){
     var answerChoiceB = quizQuestions[finalQuestions[whichQuestion]].answers.b;
     var answerChoiceC = quizQuestions[finalQuestions[whichQuestion]].answers.c;
     var answerChoiceD = quizQuestions[finalQuestions[whichQuestion]].answers.d;
-    
+    finishQuiz = false;
 
     //Starts the main function if the user input his/her name.
     if(nameInput != "" && nameInput != "INPUT YOUR NAME" ){
@@ -205,13 +215,20 @@ function testingTexting(){
             hideNameInput.style.display = "none";
             hideNameInputText.style.display = "none";
 
-        }else{
+        }else if(quizQuestions[finalQuestions[whichQuestion]].question == "\"It's not how much time you have, it's ____ you use it\" Fill Ekkos Sentence!"){
+            document.getElementById('ekkoSentence').style.display = "block";
+            showAnswers.style.display = "none";
+            hideNameInput.style.display = "none";
+            hideNameInputText.style.display = "none";
+            ekkoIsRightAnswer = document.getElementById('ekkoSentence').value;
 
+        }else{
         //CSS display changes.
-        showAnswers.style.display = "block"; 
+        showAnswers.style.display = "inline-block"; 
         hideNameInput.style.display = "none";
         hideNameInputText.style.display = "none";
         document.getElementById('yasuoSkills').style.display = "none";
+        document.getElementById('ekkoSentence').style.display = "none";
         }
         
         //Using innerHTML to change the content from the html for the ones in the sets of questions.
@@ -225,10 +242,10 @@ function testingTexting(){
 
         //Declaring the variables accordingly with the choice of answer.
         
-/*         optionA.value = answerChoiceA;
+        optionA.value = answerChoiceA;
         optionB.value = answerChoiceB;
         optionC.value = answerChoiceC;
-        optionD.value = answerChoiceD; */
+        optionD.value = answerChoiceD;
 
         //Changing the Question Image.
         var imageChange = document.getElementById("questionImg");
@@ -241,30 +258,38 @@ function testingTexting(){
         //Increasing the variable that goes trough the array of questions (index).
         
         //If the array index of the elements is equals or greater than 4 it stops the index from increasing.
-        confirmAnswer = quizQuestions[finalQuestions[whichQuestion]].rightAnswer;
+        if(whichQuestion > 0){
+        confirmAnswer = quizQuestions[finalQuestions[whichQuestion - 1]].rightAnswer;
         console.log("TBC = " + confirmAnswer);
+        }
+        else{
+            confirmAnswer = quizQuestions[finalQuestions[whichQuestion]].rightAnswer;
+        }
+
+        if(yasuoIsRightAnswer != ""){
+            isRightAnswer = yasuoIsRightAnswer;
+        }
+        
+        if(ekkoIsRightAnswer != ""){
+            isRightAnswer = ekkoIsRightAnswer;
+        }
 
         if(isRightAnswer != ""){
         var isThatRight = isRightAnswer == confirmAnswer;
         console.log("And the answer is: " + isThatRight);
         }
 
-        if(whichQuestion == 4){
+        if(whichQuestion == 5){
             document.getElementById("submitButton").style.display = "block";
             document.getElementById("nextButton").style.display = "none";
         }else{
         whichQuestion++;
         }
 
-        if(yasuoIsRightAnswer != ""){
-            isRightAnswer = yasuoIsRightAnswer; // Assigns the main checkAnswer variable to the same value as yasuoIsRightAnswer.
-            yasuoIsRightAnswer = ""; //That's a reset
-        }
-
     }else{
         alert("Please input your name!");
         }
-    if(isThatRight){
+    if(isThatRight == true){
         answersRight++;
     }
  
