@@ -1,5 +1,4 @@
 //Calling the items from the html file and assigning them to a variable.
-const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
 const submitButton = document.getElementById('submit');
 const nextQuestionButton = document.getElementById('nextQuestion');
@@ -7,10 +6,10 @@ var whichQuestion = 0;
 var questions = randomNumber(6,10);
 var choosenAnswer = "";
 var radioForm = document.getElementById('radioButtonsForm');
-var yasuoIsRightAnswer = "";
+var yasuoinputedAnswer = "";
 var confirmAnswer = "";
 var answersRight = 0;
-
+var ekkoinputedAnswer = "";
 
 
 //Quiz Question inside an array of objects.
@@ -115,26 +114,48 @@ const quizQuestions = [
         imageId: "img/basic.png"
     },
     {
-        question:"\"It's not how much time you have, it's ____ you use it\" Fill Ekkos Sentence!",
+        question:"Ekko says: --It's not how much time you have, it's ____ you use it-- fill that sentence!",
         answers: {
             textInput: ""
         },
         rightAnswer: "how",
         imageId: "img/basic.png"
-    },
+    }
 ]
 
 function genResults(){
+    var percentageOfRights = "0";
+
     document.getElementById('yasuoSkills').style.display = "none";
     document.getElementById("answers").style.display = "none";
     document.getElementById("nameInput").style.display = "none";
     document.getElementById("nameInputText").style.display = "none";
-    document.getElementById("secondHeader").style.display = "none";
     document.getElementById("answers").style.display = "none";
     document.getElementById("submitButton").style.display = "none";
-    
+    document.getElementById('ekkoInput').style.display = "none";
 
-    document.getElementById("firstHeader").innerHTML = "You got: " + answersRight + " right answers!";
+    if(answersRight == 0){
+        percentageOfRights = "0%";
+    }
+    if(answersRight == 1){
+        percentageOfRights = "20%";
+    }
+    if(answersRight == 2){
+        percentageOfRights = "40%";
+    }
+    if(answersRight == 3){
+        percentageOfRights = "60%";
+    }
+    if(answersRight == 4){
+        percentageOfRights = "80%";
+    }
+    if(answersRight == 5){
+        percentageOfRights = "100%";
+    }
+    
+    document.getElementById("firstHeader").innerHTML = "That means a percentage of: " + percentageOfRights;
+    document.getElementById("secondHeader").innerHTML = "You got: " + answersRight + " right answers!";
+
 
     console.log("You got: " + answersRight + " right answers!");
 
@@ -148,7 +169,8 @@ function randomNumber(elements, rangeFromZero){
     //Loops from 0 until the numbers that represents the lenght of the array.
     for(var i=0 ; i < givenQuestion.length ; i++){
         //Creates the random number from 0 until 9 (10 numbers in total) than adds 1 to the result to get from 1 to 10.
-        var randomQuestion = Math.floor(Math.random() * rangeFromZero) + 1;
+        var randomQuestion = Math.floor(Math.random() * rangeFromZero);
+        console.log(randomQuestion);
 
         //Says that if in the generated number is not in the array called givenQuestion to add it in the position "i". 
            if(randomQuestion != givenQuestion[0] && randomQuestion != givenQuestion[1] && randomQuestion != givenQuestion[2] 
@@ -159,31 +181,37 @@ function randomNumber(elements, rangeFromZero){
             }else{
                 i--;
             } 
-    }return givenQuestion;
+    }
+    console.log(`Given question : ${givenQuestion}`)
+    return givenQuestion;
 }
 
 
 //Yasuo question functions.
 function yasuoQuestionQ(){
-        yasuoIsRightAnswer = "q";
-        return yasuoIsRightAnswer;
+        yasuoinputedAnswer = "q";
+        return yasuoinputedAnswer;
 }
 function yasuoQuestionW(){
-        yasuoIsRightAnswer = "w";
-        return yasuoIsRightAnswer;
+        yasuoinputedAnswer = "w";
+        return yasuoinputedAnswer;
 }
 function yasuoQuestionE(){
-        yasuoIsRightAnswer = "e";
-        return yasuoIsRightAnswer;
+        yasuoinputedAnswer = "e";
+        return yasuoinputedAnswer;
 }
 function yasuoQuestionR(){
-        yasuoIsRightAnswer = "r";
-        return yasuoIsRightAnswer;
+        yasuoinputedAnswer = "r";
+        return yasuoinputedAnswer;
 }
 
+function setEkkoAnswer(){
+    ekkoinputedAnswer = document.getElementById('ekkoInput').value;
+    return ekkoinputedAnswer;
+}
 
 //Tests for the buttons and array.
-function testingTexting(){
+function buildQuiz(){
     //assigning variables to the id's.
     var firstHeaderChange = document.getElementById("firstHeader");
     var secondHeaderChange = document.getElementById("secondHeader");
@@ -195,9 +223,8 @@ function testingTexting(){
     var nameInput = document.getElementById("nameInput").value;
     var hideNameInput = document.getElementById("nameInput");
     var hideNameInputText = document.getElementById("nameInputText");
-    var isRightAnswer = document.getElementById('answers').value;
-    var ekkoIsRightAnswer = "";
-
+    var inputedAnswer = document.getElementById('answers').value;
+    
     //Hardcoding complex variables.
     var finalQuestions = questions;
     var answerChoiceA = quizQuestions[finalQuestions[whichQuestion]].answers.a;
@@ -211,16 +238,19 @@ function testingTexting(){
 
         if(quizQuestions[finalQuestions[whichQuestion]].question == "Which Yasuo’s Ability is called Steel Tempest?"){
             document.getElementById('yasuoSkills').style.display = "inline";
+            document.getElementById('ekkoInput').style.display = "none";
             showAnswers.style.display = "none";
             hideNameInput.style.display = "none";
             hideNameInputText.style.display = "none";
 
-        }else if(quizQuestions[finalQuestions[whichQuestion]].question == "\"It's not how much time you have, it's ____ you use it\" Fill Ekkos Sentence!"){
-            document.getElementById('ekkoSentence').style.display = "block";
+        }else if(quizQuestions[finalQuestions[whichQuestion]].question == "Ekko says: --It's not how much time you have, it's ____ you use it-- fill that sentence!"){
+            document.getElementById('ekkoInput').style.display = "block";
+            document.getElementById('yasuoSkills').style.display = "none";
             showAnswers.style.display = "none";
             hideNameInput.style.display = "none";
             hideNameInputText.style.display = "none";
-            ekkoIsRightAnswer = document.getElementById('ekkoSentence').value;
+            ekkoinputedAnswer = document.getElementById('ekkoInput').value;
+            console.log(ekkoinputedAnswer);
 
         }else{
         //CSS display changes.
@@ -228,7 +258,7 @@ function testingTexting(){
         hideNameInput.style.display = "none";
         hideNameInputText.style.display = "none";
         document.getElementById('yasuoSkills').style.display = "none";
-        document.getElementById('ekkoSentence').style.display = "none";
+        document.getElementById('ekkoInput').style.display = "none";
         }
         
         //Using innerHTML to change the content from the html for the ones in the sets of questions.
@@ -253,30 +283,30 @@ function testingTexting(){
     
         //Logs on the console to see the behaviour of the main variables.
         console.log(whichQuestion);
-        console.log("Aff  " + isRightAnswer);
+        console.log("Inputed Answer:  " + inputedAnswer);
         
         //Increasing the variable that goes trough the array of questions (index).
         
         //If the array index of the elements is equals or greater than 4 it stops the index from increasing.
         if(whichQuestion > 0){
-        confirmAnswer = quizQuestions[finalQuestions[whichQuestion - 1]].rightAnswer;
-        console.log("TBC = " + confirmAnswer);
+            confirmAnswer = quizQuestions[finalQuestions[whichQuestion - 1]].rightAnswer;
         }
         else{
             confirmAnswer = quizQuestions[finalQuestions[whichQuestion]].rightAnswer;
         }
-
-        if(yasuoIsRightAnswer != ""){
-            isRightAnswer = yasuoIsRightAnswer;
-        }
-        
-        if(ekkoIsRightAnswer != ""){
-            isRightAnswer = ekkoIsRightAnswer;
+        if(yasuoinputedAnswer != ""){
+            inputedAnswer = yasuoinputedAnswer;
         }
 
-        if(isRightAnswer != ""){
-        var isThatRight = isRightAnswer == confirmAnswer;
-        console.log("And the answer is: " + isThatRight);
+        if(ekkoinputedAnswer != ""){
+            console.log(ekkoinputedAnswer)
+            inputedAnswer = ekkoinputedAnswer;
+        } 
+
+        if(inputedAnswer != ""){
+            console.log("Expected answer: " + confirmAnswer);    
+            var isThatRight = inputedAnswer == confirmAnswer;
+            console.log("And the answer is: " + isThatRight);
         }
 
         if(whichQuestion == 5){
@@ -292,6 +322,5 @@ function testingTexting(){
     if(isThatRight == true){
         answersRight++;
     }
- 
 }
 
