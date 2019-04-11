@@ -10,6 +10,7 @@ var yasuoinputedAnswer = "";
 var confirmAnswer = "";
 var answersRight = 0;
 var ekkoinputedAnswer = "";
+var isThatRight = false;
 
 
 //Quiz Question inside an array of objects.
@@ -182,7 +183,7 @@ function randomNumber(elements, rangeFromZero){
                 i--;
             } 
     }
-    console.log(`Given question : ${givenQuestion}`)
+    console.log(`Given question : ${givenQuestion}`);
     return givenQuestion;
 }
 
@@ -284,6 +285,10 @@ function buildQuiz(){
         //Logs on the console to see the behaviour of the main variables.
         console.log(whichQuestion);
         console.log("Inputed Answer:  " + inputedAnswer);
+
+        if(inputedAnswer == confirmAnswer){
+            isThatRight = true;
+        }
         
         //Increasing the variable that goes trough the array of questions (index).
         
@@ -296,16 +301,22 @@ function buildQuiz(){
         }
         if(yasuoinputedAnswer != ""){
             inputedAnswer = yasuoinputedAnswer;
+            console.log(inputedAnswer);
+            if(inputedAnswer == confirmAnswer){
+                isThatRight = true;
+            }
         }
 
         if(ekkoinputedAnswer != ""){
             console.log(ekkoinputedAnswer)
             inputedAnswer = ekkoinputedAnswer;
+            if(inputedAnswer == confirmAnswer){
+                isThatRight = true;
+            }
         } 
 
         if(inputedAnswer != ""){
             console.log("Expected answer: " + confirmAnswer);    
-            var isThatRight = inputedAnswer == confirmAnswer;
             console.log("And the answer is: " + isThatRight);
         }
 
