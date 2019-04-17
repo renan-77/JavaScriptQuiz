@@ -237,6 +237,8 @@ function buildQuiz(){
     //Starts the main function if the user input his/her name.
     if(nameInput != "" && nameInput != "INPUT YOUR NAME" ){
 
+        console.log("Quiz Started");
+
         if(quizQuestions[finalQuestions[whichQuestion]].question == "Which Yasuo’s Ability is called Steel Tempest?"){
             document.getElementById('yasuoSkills').style.display = "inline";
             document.getElementById('ekkoInput').style.display = "none";
